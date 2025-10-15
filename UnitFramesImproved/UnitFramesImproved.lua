@@ -90,7 +90,7 @@ function EnableUnitFramesImproved()
 end
 
 function UnitFramesImproved_Style_PlayerFrame()
-	PlayerFrameHealthBar:SetWidth(119);
+	PlayerFrameHealthBar:SetWidth(114);
 	PlayerFrameHealthBar:SetHeight(29);
 	PlayerFrameHealthBar:SetPoint("TOPLEFT",106,-22);
 	PlayerFrameHealthBarText:SetPoint("CENTER",50,6);
