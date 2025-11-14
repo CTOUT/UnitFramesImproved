@@ -81,7 +81,8 @@ function EnableUnitFramesImproved()
 	PlayerFrameHealthBar.capNumericDisplay = true;
 	
 	-- Setup relative layout for targetframe compared to PlayerFrame
-	TargetFrame:SetPoint("TOPLEFT", PlayerFrame, "TOPRIGHT", 36, 0);
+	-- Note: Commented out to avoid tainting secure frames (causes "prevented call" errors)
+	-- TargetFrame:SetPoint("TOPLEFT", PlayerFrame, "TOPRIGHT", 36, 0);
 	
 	-- Set up some stylings
 	UnitFramesImproved_Style_PlayerFrame();
