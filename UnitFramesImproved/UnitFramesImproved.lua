@@ -91,6 +91,11 @@ function EnableUnitFramesImproved()
 end
 
 function UnitFramesImproved_Style_PlayerFrame()
+	-- Avoid tainting secure frames during combat
+	if ( InCombatLockdown() ) then
+		return;
+	end
+	
 	PlayerFrameHealthBar:SetWidth(114);
 	PlayerFrameHealthBar:SetHeight(29);
 	PlayerFrameHealthBar:SetPoint("TOPLEFT",106,-22);
@@ -108,6 +113,12 @@ function UnitFramesImproved_Style_PlayerFrame()
 end
 
 function UnitFramesImproved_SetFrameScale(scale)
+	-- Avoid tainting secure frames during combat
+	if ( InCombatLockdown() ) then
+		dout("Cannot change frame scale during combat.");
+		return;
+	end
+	
 	PlayerFrame:SetScale(scale);
 	TargetFrame:SetScale(scale);
 	FocusFrame:SetScale(scale);
@@ -262,12 +273,22 @@ function UnitFramesImproved_PlayerFrame_ToPlayerArt(self)
 end
 
 function UnitFramesImproved_PlayerFrame_ToVehicleArt(self)
+	-- Avoid tainting secure frames during combat
+	if ( InCombatLockdown() ) then
+		return;
+	end
+	
 	PlayerFrameHealthBar:SetHeight(12);
 	PlayerFrameHealthBarText:SetPoint("CENTER",50,3);
 end
 
 function UnitFramesImproved_TargetFrame_Update(self)
 	local thisName = self:GetName();
+	
+	-- Avoid tainting secure frames during combat
+	if ( InCombatLockdown() ) then
+		return;
+	end
 	
 	-- Layout elements
 	self.healthbar.lockColor = true
